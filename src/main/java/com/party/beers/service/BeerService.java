@@ -12,8 +12,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.net.ssl.SSLEngineResult;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,6 +43,8 @@ public class BeerService {
 
     @Transactional
     public List<BeerVarietiesView> allBeersJoinVarieties() {
+        Map<Integer, Integer> map = new HashMap<>();
+
         List<Beer> beerList = beerRepository.findAll(Sort.by("name").ascending());
         List<VarietiesBeer> varietiesBeers = new ArrayList<>();
         List<BeerVarietiesView> beerVarietiesViewList = new ArrayList<>();
