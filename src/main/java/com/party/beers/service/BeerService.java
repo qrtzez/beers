@@ -44,6 +44,7 @@ public class BeerService {
     @Transactional
     public List<BeerVarietiesView> allBeersJoinVarieties() {
         Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map1 = new HashMap<>();
 
         List<Beer> beerList = beerRepository.findAll(Sort.by("name").ascending());
         List<VarietiesBeer> varietiesBeers = new ArrayList<>();
