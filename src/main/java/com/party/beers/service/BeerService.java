@@ -31,6 +31,7 @@ public class BeerService {
 
     @Transactional
     public List<BeerView> allSortBeer(){
+        List<String> list = new ArrayList<>();
         List<Beer> beerList = beerRepository.findAll(Sort.by("name").ascending());
         return beerList.stream()
                 .map(mapperFactory.getMapperFacade(Beer.class, BeerView.class)::map)
